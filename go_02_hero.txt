@@ -1,0 +1,364 @@
+1. Go syntax
+Go tooling
+Go idioms
+Concurrency
+2. basics:
+package
+func
+struct
+interface
+slice
+map
+pointer
+error
+3. concurrency:
+goroutine
+channel
+select
+context
+sync.WaitGroup
+mutex
+4. backend:
+http.Server
+JSON
+Middleware
+REST API
+JWT
+PostgreSQL
+Redis
+docker
+grpc
+clean arch for go
+lambda w go
+
+
+---
+
+package
+import
+func
+struct
+interface
+slice
+array
+map
+pointer
+error
+
+
+defer
+panic
+recover
+
+method receivers
+
+embedding
+
+type assertions
+
+generics
+
+reflection
+``
+
+value, err := GetData()
+
+if err != nil {
+    return err
+}
+//try-catch
+
+
+type User struct {
+    Person
+}
+//inheritance
+type User struct {}
+
+func (u User) Save() {}
+
+
+
+goroutines:
+
+go Process()	//task.run()
+
+
+
+
+channels:
+
+jobs <- x
+
+x := <- jobs
+
+
+
+select:
+
+select {
+case msg := <-chan1:
+case msg := <-chan2:
+}
+
+
+
+context:
+
+context.WithTimeout
+context.WithCancel
+context.WithDeadline
+
+HTTP
+gRPC
+Database
+AWS SDK
+
+
+
+worker pools:
+
+10000 jobs
+↓
+10 workers
+↓
+Process concurrently
+
+
+escape analysis:
+
+what stays on stack
+what moves to heap
+
+go build -gcflags="-m"
+
+
+
+Garbage Collection:
+
+allocation
+heap
+GC pressure
+
+
+
+
+sync.Pool
+sync.Pool{}
+
+high throughput APIs
+log processors
+proxies
+
+
+
+
+Profiling:
+
+pprof
+trace
+benchmarks
+
+Optimize API from 1k req/s → 10k req/s
+
+net/http (HTTP Server)
+
+
+
+Middleware:
+
+Logging
+Authentication
+Rate Limiting
+Metrics
+``
+
+auth:
+
+JWT
+Refresh Token
+RBAC
+``
+
+
+
+PostgreSQL:
+
+sqlx
+gorm
+pgx
+
+
+Cache Aside
+TTL
+Redis Invalidation
+
+
+
+
+gRPC:
+Kubernetes
+Istio
+Cloud Native systems
+(User Service
+Inventory Service)
+
+
+
+
+distributed locks:
+
+SET lock NX EX
+
+Distributed Cron Job
+
+
+
+
+---
+
+try w aws sdk v2:
+
+S3 uploader
+SQS consumer
+SNS publisher
+Lambda
+
+
+---
+
+
+build a proxy w go such as:
+1. reverse proxy
+2. load balancer
+-> networking tcp http
+
+=> mini tf: parse yaml, manage state, call aws apis
+
+
+
+
+---
+
+
+===
+
+---
+
+Project 1
+
+Concurrent File Scanner
+
+Plain Text
+10,000 files
+↓
+goroutine worker pool
+↓
+scan hashes
+
+Learn:
+
+Plain Text
+goroutine
+channel
+context
+
+
+
+Project 2
+
+High Throughput Log Processor
+
+Plain Text
+100000 log lines
+↓
+workers
+↓
+aggregation
+
+Learn:
+
+Plain Text
+memory
+GC
+throughput
+
+
+
+Project 3
+
+S3 Backup Service
+
+Plain Text
+folder
+↓
+parallel upload
+↓
+S3
+
+Learn:
+
+Plain Text
+AWS SDK
+concurrency
+retry
+`
+
+
+
+
+
+Project 4
+
+Distributed Job Scheduler
+
+Plain Text
+Go API
+Redis
+Postgres
+
+Learn:
+
+Plain Text
+locks
+queues
+distributed systems
+
+
+
+
+
+
+Project 5
+
+Mini Kubernetes Operator
+
+Learn:
+
+Plain Text
+client-go
+CRDs
+controllers
+reconciliation
+
+
+
+------=-=-=-=---------
+
+finally:
+
+1. Go fundamentals
+2. Concurrency
+3. Context
+4. PostgreSQL
+5. Redis
+6. gRPC
+7. AWS SDK
+8. Docker
+9. Kubernetes Client-Go
+10. Building CLIs
+11. Distributed Systems
+12. Profiling & Performance
+
+
+after those basic still need a basic crud w go for practical purpose and basic check for knowledge!
